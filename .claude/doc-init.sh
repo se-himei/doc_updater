@@ -3,6 +3,14 @@
 # ドキュメント初期化スクリプト
 # プロジェクトルートにdocsディレクトリを作成
 
+# 現在のディレクトリ名が .claude であることを確認
+CURRENT_DIR_NAME="$(basename "$(pwd)")"
+if [ "$CURRENT_DIR_NAME" != ".claude" ]; then
+    echo "エラー: このスクリプトは .claude ディレクトリから実行する必要があります。"
+    echo "現在のディレクトリ: $(pwd)"
+    exit 1
+fi
+
 # スクリプトのディレクトリを取得
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_ROOT="$(dirname "$SCRIPT_DIR")"
